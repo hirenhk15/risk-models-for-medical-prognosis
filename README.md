@@ -2,8 +2,8 @@
 
 Two approaches to build risk models: 
 
->(1) Linear risk models
->(2) Non-linear risk models
+>1. Linear risk models
+>2. Non-linear risk models
 
 ## Acknowledgement
 
