@@ -1,5 +1,10 @@
 # Risk-models
 
-# Acknowledgement
+Two approaches to build risk models: 
 
-[a link](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome)
+>(1) Linear risk models
+>(2) Non-linear risk models
+
+## Acknowledgement
+
+Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome)
