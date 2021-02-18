@@ -1,9 +1,6 @@
-# Risk-models
+# Risk Models For Medical Prognosis
 
-Two approaches to build risk models: 
-
->1. Linear risk models
->2. Non-linear risk models
+This case study is about prognostic models to predict the 10-year risk of death of an individuals from the NHANES I epidemiology dataset (for a detailed description of this dataset is given at the [CDC Website](https://wwwn.cdc.gov/nchs/nhanes/nhefs/default.aspx/)).
 
 ## Credit
 
