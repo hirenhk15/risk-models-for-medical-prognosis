@@ -1,0 +1,24 @@
+{	"SampleFileName": "NHANES_I_epidemiology.csv",
+	"NumberofColumns" : 19,
+	"ColumnName": {
+        "Age": "int",  
+        "Diastolic BP": "float",
+        "Poverty index": "int",
+        "Race": "int",
+        "Red blood cells": "float",
+        "Sedimentation rate": "float",
+        "Serum Albumin": "float",
+        "Serum Cholesterol": "float",
+        "Serum Iron": "int",
+        "Serum Magnesium": "float",
+        "Serum Protein": "float",
+        "Sex": "int",
+        "Systolic BP": "float",
+        "TIBC": "int",
+        "TS": "float",
+        "White blood cells": "float",
+        "BMI": "float",
+        "Pulse pressure": "float",
+		"outcome" : "boolean"
+	}
+}
