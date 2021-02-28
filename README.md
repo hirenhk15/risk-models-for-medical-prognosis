@@ -60,7 +60,7 @@ Data Ingestion --> Data validation --> Preprocessing --> Model Building/Evaluati
  - Missing at random or not (e.g. Age variable)
 
 ## Jupyter Notebook
-You can find the notebook containing initial efforts to explore data and build models.
+You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/notebook/risk_models-classification.ipynb) the notebook containing initial efforts to explore data and build models.
 
 ## Installation
 Clone this repository:
@@ -80,18 +80,42 @@ python app.py
 Healthcare
 
 ## Project Structure
+```bash
+risk-models-for-medical-prognosis/
+│
+├── risk_models/
+│   ├── data/
+│   │   ├── NHANES_I_epidemiology.csv
+│   │   
+│   ├── model/
+│   │   └── risk_model.pkl
+│   │   
+├── notebook/
+├── images/
+│
+├── tests/
+│   ├── data/
+│   │   ├── test.json
+│   ├── conftest.py
+│   └── test_predictions.py
+|
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── app.py
+```
 
 ## Future developments:
  - Database integration
- - Batch predection
+ - Batch prediction
 
 ## Acknowledgement
 This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea.
 
 
-# Steps
+## Steps
 
-1. Combine X and y data into one file
+1. Combine X and y data into one file -- Done
 2. Load data and validate features and its data types (reference wafer fault detection)
 3. Setup a pipeline that ingest data, validate data, preprocess and clean and encoding features
 4. Use shap to display on UI features contributing in positive prediction (in red) and features contributing in negative prediction (in blue).

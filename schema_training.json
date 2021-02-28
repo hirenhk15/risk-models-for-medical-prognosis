@@ -1,4 +1,5 @@
-{	"SampleFileName": "NHANES_I_epidemiology.csv",
+{	
+    "SampleFileName": "NHANES_I_epidemiology.csv",
 	"NumberofColumns" : 19,
 	"ColumnName": {
         "Age": "int",  
