@@ -16,7 +16,6 @@ class RawDataValidation:
         self.logger = AppLogger()
     
     def read_schema(self):
-        
         try:
             with open(self.schema_path, 'r') as f:
                 _data = json.load(f)

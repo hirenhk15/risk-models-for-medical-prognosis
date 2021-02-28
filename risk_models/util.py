@@ -56,3 +56,21 @@ def nhanesi(display=False):
         X_display["Sex"] = ["Male" if v == 1 else "Female" for v in X["Sex"]]
         return X_display, np.array(y)
     return X, np.array(y)
+
+class DataLoader:
+    """
+    This class loads and splits the data into training, validation and test sets.
+    """
+    def __init__(self):
+        pass
+
+    def load_and_split(self, threshold: int, test_size: float, random_state: int):
+        # Load the data
+        X_dev, X_test, y_dev, y_test = load_data(threshold)
+
+        # Split the data according to the test size
+        X_train, X_val, y_train, y_val = train_test_split(
+            X_dev, y_dev, test_size=test_size, random_state=random_state
+            )
+
+        return X_train, X_val, X_test, y_train, y_val, y_test

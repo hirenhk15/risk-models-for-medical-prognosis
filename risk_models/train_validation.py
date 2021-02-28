@@ -10,8 +10,8 @@ class TrainValidation:
     def __init__(self, path: str):
         self.path = path
         self.logger = AppLogger()
-        self.raw_data = RawDataValidation()
-        self.data_transform = DataTransformation()
+        self.raw_data = RawDataValidation(self.path)
+        self.data_transform = DataTransformation(self.path)
         self.file_object = open('./logs/training_main_log.txt', 'a+')
 
     def validate(self):
@@ -35,8 +35,8 @@ class TrainValidation:
             # Validating if any column has all values missing
             self.raw_data.validate_null_values()
             self.logger.log(self.file_object, 'Raw Data Validation Complete!')
-
             self.logger.log(self.file_object, 'Starting Data Transforamtion!')
+
             # Impute missing null values
             self.data_transform.impute_null_values()
 
