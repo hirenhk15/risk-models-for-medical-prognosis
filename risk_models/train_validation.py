@@ -37,8 +37,9 @@ class TrainValidation:
             self.logger.log(self.file_object, 'Raw Data Validation Complete!')
             self.logger.log(self.file_object, 'Starting Data Transforamtion!')
 
-            # Impute missing null values
-            self.data_transform.impute_null_values()
+            # Impute missing null values if present
+            if self.data_transform.is_null_present():
+                self.data_transform.impute_null_values()
 
             self.log_writer.log(self.file_object, 'Data Transformation Completed!')
             self.file_object.close()

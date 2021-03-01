@@ -1,9 +1,12 @@
+# This module is for data transformation methods
+
 import os
 import config
 from sklearn.impute import SimpleImputer
 from util import DataLoader
 from logger import AppLogger
 
+# Load model configuration parameters from the config
 TIME_THRESHOLD = config['TIME_THRESHOLD']
 TEST_SIZE = config['TEST_SIZE']
 RANDOM_STATE = config['RANDOM_STATE']
@@ -18,12 +21,45 @@ class DataTransformation:
     Revisions: None
     """
     def __init__(self, path: str):
+        """Initialize model arguments
+
+        Args:
+            path (str): path of the data
+        """
         self.path = path
         self.logger = AppLogger()
         self.load_data = DataLoader()
     
     def scaler(self):
+        """
+        Scaling function to scale the training data
+        """
         pass
+
+    def _get_data(self):
+        """
+        Method to load and split the data into training, validation and test sets
+        """
+        # Load and split the data
+        X_train, X_val, X_test, y_train, y_val, y_test = self.load_data.load_and_split(TIME_THRESHOLD, TEST_SIZE, RANDOM_STATE)
+
+        self.X_train = X_train
+        self.X_val = X_val
+        self.X_test = X_test
+        self.y_train = y_train
+        self.y_val = y_val
+        self.y_test = y_test
+
+    def is_null_present(self):
+        """
+        Method to check whether null values present in the data!
+        """
+        self.null_present = False
+
+        if self.X_train.isnull().sum().sum() != 0:
+            self.null_present = True
+        
+        return self.null_present
 
     def impute_null_values(self):
         """
@@ -34,23 +70,23 @@ class DataTransformation:
             self.logger.log(f, 'Imputation of Missing Values Started!')
 
             # Load and split the data
-            X_train, X_val, X_test, y_train, y_val, y_test = self.load_data.load_and_split(TIME_THRESHOLD, TEST_SIZE, RANDOM_STATE)
-
+            self._get_data()
+            
             # sum(df.isnull().any(axis=1))/df.shape[0]
 
             imputer = SimpleImputer(strategy='mean')
-            imputer.fit(X_train)
+            imputer.fit(self.X_train)
 
-            X_train_mean_imputed = pd.DataFrame(imputer.transform(X_train), columns=X_train.columns)
-            X_val_mean_imputed = pd.DataFrame(imputer.transform(X_val), columns=X_val.columns)
+            X_train_mean_imputed = pd.DataFrame(imputer.transform(self.X_train), columns=self.X_train.columns)
+            X_val_mean_imputed = pd.DataFrame(imputer.transform(self.X_val), columns=self.X_val.columns)
             
             self.logger.log(f, 'Imputation of Missing Values Complete!')
             f.close()
 
             # Save imputed data into csv
-            pd.concat([X_train_mean_imputed, y_train], axis=1).to_csv('./data/train.csv').rename(columns={'time': 'outcome'})
-            pd.concat([X_val_mean_imputed, y_val], axis=1).to_csv('./data/val.csv').rename(columns={'time': 'outcome'})
-            pd.concat([X_test, y_test], axis=1).to_csv('./data/test.csv').rename(columns={'time': 'outcome'})
+            pd.concat([X_train_mean_imputed, self.y_train], axis=1).to_csv('./data/train.csv').rename(columns={'time': 'outcome'})
+            pd.concat([X_val_mean_imputed, self.y_val], axis=1).to_csv('./data/val.csv').rename(columns={'time': 'outcome'})
+            pd.concat([self.X_test, self.y_test], axis=1).to_csv('./data/test.csv').rename(columns={'time': 'outcome'})
             
         except Exception as e:
             with open('./logs/data_imputation_log.txt', 'a+') as f:
