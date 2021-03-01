@@ -105,7 +105,7 @@ celerybeat.pid
 *.sage.py
 
 # Directories
-risk_models/model
+#risk_models/model
 risk_models/logs
 risk_models/data/train.csv
 risk_models/data/val.csv
