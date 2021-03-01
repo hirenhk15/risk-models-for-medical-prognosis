@@ -1,7 +1,8 @@
 {	
     "SampleFileName": "NHANES_I_epidemiology.csv",
-	"NumberofColumns" : 19,
+	"NumberofColumns" : 20,
 	"ColumnName": {
+        "Id": "int",
         "Age": "int",  
         "Diastolic BP": "float",
         "Poverty index": "int",

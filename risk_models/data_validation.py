@@ -1,5 +1,7 @@
 import os
-from logger import AppLogger
+import json
+import pandas as pd
+from risk_models.logger import AppLogger
 
 
 class RawDataValidation:
@@ -26,12 +28,12 @@ class RawDataValidation:
             column_length = _data['NumberofColumns']
 
             # Add logs
-            with open('./logs/data_read_schema_log.txt.', 'a+') as f:
+            with open('./risk_models/logs/data_read_schema_log.txt.', 'a+') as f:
                 message = f'Filename:: {file_name}\t NumberofColumns:: {column_length}\n'
                 self.logger.log(f, message)
         
         except Exception as e:
-            with open('./logs/data_read_schema_log.txt.', 'a+') as f:
+            with open('./risk_models/logs/data_read_schema_log.txt.', 'a+') as f:
                 self.logger.log(f, str(e))
                 
                 raise e
@@ -40,7 +42,7 @@ class RawDataValidation:
 
     def validate_column_length(self, column_length: int) -> None:
         try:
-            f = open('./logs/data_column_length_log.txt', 'a+')
+            f = open('./risk_models/logs/data_column_length_log.txt', 'a+')
             self.logger.log(f, 'Column Length Validation Started!')
 
             # Read data from file
@@ -55,19 +57,20 @@ class RawDataValidation:
             f.close()
             
         except Exception as e:
-            with open('./logs/data_column_length_log.txt', 'a+') as f:
+            with open('./risk_models/logs/data_column_length_log.txt', 'a+') as f:
                 self.logger.log(f, str(e))
         
             raise e
         
     def validate_target_name(self, column_names: dict) -> None:
         try:
-            f = open('./logs/data_target_name_log.txt', 'a+')
+            f = open('./risk_models/logs/data_target_name_log.txt', 'a+')
             self.logger.log(f, 'Target Name Validation Started!')
 
             # Read data from file
             df = pd.read_csv(self.path)
-            if not 'outcome' in df.columns:
+            
+            if not 'y' in df.columns:
                 message = 'Invalid Target Name!'
                 self.logger.log(f, message)
                 
@@ -77,7 +80,7 @@ class RawDataValidation:
             f.close()
             
         except Exception as e:
-            with open('./logs/data_target_name_log.txt', 'a+') as f:
+            with open('./risk_models/logs/data_target_name_log.txt', 'a+') as f:
                 self.logger.log(f, str(e))
         
             raise e
@@ -88,7 +91,7 @@ class RawDataValidation:
         If all the values are missing, the data is not suitable for processing.
         """
         try:
-            f = open('./logs/data_null_values_log.txt', 'a+')
+            f = open('./risk_models/logs/data_null_values_log.txt', 'a+')
             self.logger.log(f, 'Missing Values Validation Started!')
 
             # Read data from file
@@ -104,7 +107,7 @@ class RawDataValidation:
             f.close()
         
         except Exception as e:
-            with open('./logs/data_null_values_log.txt', 'a+') as f:
+            with open('./risk_models/logs/data_null_values_log.txt', 'a+') as f:
                 self.logger.log(f, str(e))
         
             raise e

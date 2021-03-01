@@ -12,9 +12,9 @@ class AppLogger:
         Create logs directory if not present
         """
         _log_dir = './risk_models/logs'
-        if os.path.isdir(_log_dir):
+        if not os.path.isdir(_log_dir):
             os.makedirs(_log_dir)
-    
+        
     def log(self, file_object: object, log_message: str) -> None:
         """Write log files
 

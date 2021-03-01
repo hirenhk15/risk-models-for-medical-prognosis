@@ -1,14 +1,15 @@
 import os
 import config
-from util import cindex
-from logger import AppLogger
+import pandas as pd
+from risk_models.util import cindex
+from risk_models.logger import AppLogger
 from sklearn.metrics import make_scorer
 from sklearn.model_selection import GridSearchCV
 
 # Load model and hyperparameters
-MODEL = config['MODEL']
-HYPERPARAMS = config['HYPERPARAMS']
-CROSS_VALIDATION = config['CROSS_VALIDATION']
+MODEL = config.MODEL
+HYPERPARAMS = config.HYPERPARAMS
+CROSS_VALIDATION = config.CROSS_VALIDATION
 
 
 class TrainModel:
@@ -24,12 +25,12 @@ class TrainModel:
         Initialize TrainModel class arguments
         """
         self.logger = AppLogger()
-        self.file_object = open('./logs/model_training_log.txt', 'a+')
+        self.file_object = open('./risk_models/logs/model_training_log.txt', 'a+')
 
     def _get_data(self):
-        self.train_df = pd.read_csv('./data/train.csv')
-        self.val_df = pd.read_csv('./data/val.csv')
-        self.test_df = pd.read_csv('./data/test.csv')
+        self.train_df = pd.read_csv('./risk_models/data/train.csv')
+        self.val_df = pd.read_csv('./risk_models/data/val.csv')
+        self.test_df = pd.read_csv('./risk_models/data/test.csv')
 
     def _feature_target_split(self):
         self.X_train = self.train_df.drop('outcome', axis=1)
@@ -54,7 +55,7 @@ class TrainModel:
                 os.makedirs(_model_dir)
 
             # Open a file, where you ant to store the data
-            with open('./model/risk_model.pkl', 'wb') as f:
+            with open('./risk_models/model/risk_model.pkl', 'wb') as f:
                 # Dump information to that file
                 pickle.dump(model, f)
 

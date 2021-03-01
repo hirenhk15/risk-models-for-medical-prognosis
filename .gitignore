@@ -107,6 +107,9 @@ celerybeat.pid
 # Directories
 risk_models/model
 risk_models/logs
+risk_models/data/train.csv
+risk_models/data/val.csv
+risk_models/data/test.csv
 
 # Environments
 #.env

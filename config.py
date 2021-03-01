@@ -9,7 +9,7 @@ TEST_SIZE = 0.25
 RANDOM_STATE = 10
 
 # Raw data path
-RAW_DATA_PATH = './data/NHANES_I_epidemiology.csv'
+RAW_DATA_PATH = './risk_models/data/NHANES_I_epidemiology.csv'
 
 # Model configuration for training
 MODEL = RandomForestClassifier(random_state=RANDOM_STATE)

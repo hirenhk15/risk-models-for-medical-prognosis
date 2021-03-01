@@ -2,14 +2,15 @@
 
 import os
 import config
+import pandas as pd
 from sklearn.impute import SimpleImputer
-from util import DataLoader
-from logger import AppLogger
+from risk_models.util import DataLoader
+from risk_models.logger import AppLogger
 
 # Load model configuration parameters from the config
-TIME_THRESHOLD = config['TIME_THRESHOLD']
-TEST_SIZE = config['TEST_SIZE']
-RANDOM_STATE = config['RANDOM_STATE']
+TIME_THRESHOLD = config.TIME_THRESHOLD
+TEST_SIZE = config.TEST_SIZE
+RANDOM_STATE = config.RANDOM_STATE
 
 
 class DataTransformation:
@@ -54,6 +55,8 @@ class DataTransformation:
         """
         Method to check whether null values present in the data!
         """
+        # Load and split the data
+        self._get_data()
         self.null_present = False
 
         if self.X_train.isnull().sum().sum() != 0:
@@ -66,11 +69,11 @@ class DataTransformation:
         Imputation of mean values in the data where null values are present
         """
         try:
-            f = open('./logs/data_imputation_log.txt', 'a+')
+            f = open('./risk_models/logs/data_imputation_log.txt', 'a+')
             self.logger.log(f, 'Imputation of Missing Values Started!')
 
-            # Load and split the data
-            self._get_data()
+            # # Load and split the data
+            # self._get_data()
             
             # sum(df.isnull().any(axis=1))/df.shape[0]
 
@@ -82,14 +85,14 @@ class DataTransformation:
             
             self.logger.log(f, 'Imputation of Missing Values Complete!')
             f.close()
-
+            
             # Save imputed data into csv
-            pd.concat([X_train_mean_imputed, self.y_train], axis=1).to_csv('./data/train.csv').rename(columns={'time': 'outcome'})
-            pd.concat([X_val_mean_imputed, self.y_val], axis=1).to_csv('./data/val.csv').rename(columns={'time': 'outcome'})
-            pd.concat([self.X_test, self.y_test], axis=1).to_csv('./data/test.csv').rename(columns={'time': 'outcome'})
+            pd.concat([X_train_mean_imputed, self.y_train.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/train.csv')
+            pd.concat([X_val_mean_imputed, self.y_val.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/val.csv')
+            pd.concat([self.X_test, self.y_test.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/test.csv')
             
         except Exception as e:
-            with open('./logs/data_imputation_log.txt', 'a+') as f:
+            with open('./risk_models/logs/data_imputation_log.txt', 'a+') as f:
                 self.logger.log(f, str(e))
         
             raise e

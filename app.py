@@ -36,13 +36,13 @@ def predict_patient_outcome():
         return Response(f'10-year risk of death of a patient: {y_pred:.2f}')
 
     except Exception as e:
-        return Response('An Error Occurred! %s' % e)
+        return Response('An error occurred! %s' % e)
     
 @app.route('/train', methods=['GET'])
 @cross_origin()
 def train_risk_model():
     try:
-        path = config['RAW_DATA_PATH']
+        path = config.RAW_DATA_PATH
         import pdb;pdb.set_trace()
         train_val_obj = TrainValidation(path)
         train_val_obj.validate()
@@ -51,7 +51,7 @@ def train_risk_model():
         train_model_obj.train()
 
     except Exception as e:
-        return Response('An Error Occurred! %s' % e)
+        return Response('An error occurred! %s' % e)
     
     return Response('Training successfull!')
 

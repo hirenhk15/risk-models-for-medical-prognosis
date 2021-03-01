@@ -1,9 +1,9 @@
 # This module is for model inference tasks
 
 import os
-import config
 import pickle
-from logger import AppLogger
+import pandas as pd
+from risk_models.logger import AppLogger
 
 
 class ModelInference:

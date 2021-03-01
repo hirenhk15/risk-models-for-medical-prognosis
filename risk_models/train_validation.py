@@ -1,6 +1,6 @@
-from logger import AppLogger
-from data_validation import RawDataValidation
-from data_transform import DataTransformation
+from risk_models.logger import AppLogger
+from risk_models.data_validation import RawDataValidation
+from risk_models.data_transform import DataTransformation
 
 
 class TrainValidation:
@@ -12,7 +12,7 @@ class TrainValidation:
         self.logger = AppLogger()
         self.raw_data = RawDataValidation(self.path)
         self.data_transform = DataTransformation(self.path)
-        self.file_object = open('./logs/training_main_log.txt', 'a+')
+        self.file_object = open('./risk_models/logs/training_main_log.txt', 'a+')
 
     def validate(self):
         """Validation steps are performed in this method.
@@ -22,7 +22,7 @@ class TrainValidation:
         """
         try:
             self.logger.log(self.file_object, 'Starting Data Validation!')
-
+            
             # Extracting values from prediction schema
             column_names, column_length = self.raw_data.read_schema()
 
@@ -41,7 +41,7 @@ class TrainValidation:
             if self.data_transform.is_null_present():
                 self.data_transform.impute_null_values()
 
-            self.log_writer.log(self.file_object, 'Data Transformation Completed!')
+            self.logger.log(self.file_object, 'Data Transformation Completed!')
             self.file_object.close()
         
         except Exception as e:
