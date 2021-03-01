@@ -89,7 +89,7 @@ class DataTransformation:
             # Save imputed data into csv
             pd.concat([X_train_mean_imputed, self.y_train.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/train.csv')
             pd.concat([X_val_mean_imputed, self.y_val.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/val.csv')
-            pd.concat([self.X_test, self.y_test.reset_index(drop=True)], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/test.csv')
+            pd.concat([self.X_test, self.y_test], axis=1).rename(columns={'time': 'outcome'}).to_csv('./risk_models/data/test.csv')
             
         except Exception as e:
             with open('./risk_models/logs/data_imputation_log.txt', 'a+') as f:
