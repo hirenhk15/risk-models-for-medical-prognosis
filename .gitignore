@@ -104,6 +104,10 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+# Directories
+risk_models/model
+risk_models/logs
+
 # Environments
 #.env
 .venv/

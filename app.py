@@ -43,7 +43,7 @@ def predict_patient_outcome():
 def train_risk_model():
     try:
         path = config['RAW_DATA_PATH']
-
+        import pdb;pdb.set_trace()
         train_val_obj = TrainValidation(path)
         train_val_obj.validate()
 
