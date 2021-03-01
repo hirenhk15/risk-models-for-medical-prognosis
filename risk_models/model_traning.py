@@ -54,7 +54,7 @@ class TrainModel:
                 os.makedirs(_model_dir)
 
             # Open a file, where you ant to store the data
-            with open('./model/best_model.pkl', 'wb') as f:
+            with open('./model/risk_model.pkl', 'wb') as f:
                 # Dump information to that file
                 pickle.dump(model, f)
 

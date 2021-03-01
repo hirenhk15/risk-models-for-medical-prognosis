@@ -23,12 +23,15 @@ def home():
 @cross_origin()
 def predict_patient_outcome():
     try:
+        # Get the data from request
+        data = request.json()
+
         # Initialize model inference object and load model
         model_obj = ModelInference()
-        best_model = model_obj.load_model()
+        risk_model = model_obj.load_model()
         
         # Get prediction for give request parameters
-        y_pred = model_obj.get_prediction(best_model, request)
+        y_pred = model_obj.get_prediction(risk_model, data)
 
         return Response(f'10-year risk of death of a patient: {y_pred:.2f}')
 

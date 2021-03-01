@@ -28,12 +28,12 @@ class ModelInference:
 
         try:
             # Load model from model directory
-            with open('./model/best_model.pkl', 'rb') as f:
-                best_model = pickle.load(f)
+            with open('./model/risk_model.pkl', 'rb') as f:
+                risk_model = pickle.load(f)
 
             self.logger.log(self.file_object, 'Model Loaded Successfully!')
 
-            return best_model
+            return risk_model
 
         except Exception as e:
             with self.file_object as f:
@@ -42,6 +42,7 @@ class ModelInference:
             raise e
 
     def get_prediction(self, model: object, data: pd.Series):
+        # Return the probability score (i.e. risk score) of positive class
         return model.predict_proba(data)[:, 1]
 
     def feature_importance(self):

@@ -16,7 +16,7 @@ class AppLogger:
             os.makedirs(_log_dir)
     
     def log(self, file_object: object, log_message: str) -> None:
-        """AI is creating summary for log
+        """Write log files
 
         Args:
             file_object (object): A file object
