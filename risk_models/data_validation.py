@@ -1,3 +1,5 @@
+# This file contains all the raw data validation methods
+
 import os
 import json
 import pandas as pd
@@ -13,11 +15,20 @@ class RawDataValidation:
     Revisions: None
     """
     def __init__(self, path: str):
+        """
+        Initialize class arguments
+
+        Args:
+            path (str): Path of the raw data
+        """
         self.path = path
         self.schema_path = 'schema_training.json'
         self.logger = AppLogger()
     
     def read_schema(self):
+        """
+        Reading json schema for raw data validaiton
+        """
         try:
             with open(self.schema_path, 'r') as f:
                 _data = json.load(f)
@@ -41,6 +52,15 @@ class RawDataValidation:
         return column_names, column_length
 
     def validate_column_length(self, column_length: int) -> None:
+        """Method for validating column length in the data
+
+        Args:
+            column_length (int): Length of the columns
+
+        Raises:
+            ValueError: Raises value errors
+            e: Any errors related to exceptions
+        """
         try:
             f = open('./risk_models/logs/data_column_length_log.txt', 'a+')
             self.logger.log(f, 'Column Length Validation Started!')
@@ -63,6 +83,15 @@ class RawDataValidation:
             raise e
         
     def validate_target_name(self, column_names: dict) -> None:
+        """Method to validate the name of the target feature
+
+        Args:
+            column_names (dict): Name of the all columns
+
+        Raises:
+            ValueError: Raises value errors
+            e: Any errors related to exceptions
+        """
         try:
             f = open('./risk_models/logs/data_target_name_log.txt', 'a+')
             self.logger.log(f, 'Target Name Validation Started!')

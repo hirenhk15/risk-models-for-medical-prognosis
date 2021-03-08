@@ -20,3 +20,6 @@ HYPERPARAMS = {
             }
 
 CROSS_VALIDATION = 5
+
+# Risk score threshold which used to classify target class
+RISK_THRESHOLD = 0.5

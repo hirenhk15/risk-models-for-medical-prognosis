@@ -17,23 +17,29 @@ CORS(app)
 @app.route('/', methods=['GET'])
 @cross_origin()
 def home():
+    """
+    Home page to the web app
+    """
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 @cross_origin()
 def predict_patient_outcome():
+    """
+    This API handler is used to make predictions on patients medical history data
+    """
     try:
         # Get the data from request
-        data = request.json()
+        data = request.get_json()
 
         # Initialize model inference object and load model
         model_obj = ModelInference()
         risk_model = model_obj.load_model()
         
         # Get prediction for give request parameters
-        y_pred = model_obj.get_prediction(risk_model, data)
+        y_pred, score = model_obj.get_prediction(risk_model, data)
 
-        return Response(f'10-year risk of death of a patient: {y_pred:.2f}')
+        return Response(f'10-year risk of death of a patient: {y_pred} (Score: {score:.2f})')
 
     except Exception as e:
         return Response('An error occurred! %s' % e)
@@ -41,9 +47,12 @@ def predict_patient_outcome():
 @app.route('/train', methods=['GET'])
 @cross_origin()
 def train_risk_model():
+    """
+    This API handler used to train machine learning model on train data
+    """
     try:
         path = config.RAW_DATA_PATH
-        import pdb;pdb.set_trace()
+        
         train_val_obj = TrainValidation(path)
         train_val_obj.validate()
 

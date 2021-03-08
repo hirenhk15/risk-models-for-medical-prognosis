@@ -1,3 +1,6 @@
+# This file contains methods related to training data validation and 
+# apply necessary cleaning and pre-processing transformations
+
 from risk_models.logger import AppLogger
 from risk_models.data_validation import RawDataValidation
 from risk_models.data_transform import DataTransformation

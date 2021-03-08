@@ -1,5 +1,6 @@
-import os
+# All the methods related to load and split the data
 
+import os
 import lifelines
 import numpy as np
 import pandas as pd
@@ -10,11 +11,28 @@ __location__ = os.path.realpath(
 )
 
 
-def cindex(y_true, scores):
+def cindex(y_true: np.array, scores: np.array) -> float:
+    """AI is creating summary for cindex
+
+    Args:
+        y_true (np.array): An array of actual values of target
+        scores (np.array): An array of predicted score of target
+
+    Returns:
+        [float]: Returns C-Index score
+    """
     return lifelines.utils.concordance_index(y_true, scores)
 
 
-def load_data(threshold):
+def load_data(threshold: int):
+    """This method loads and split the data into dev and test
+
+    Args:
+        threshold (int): Time threshold value to calulate risk for
+
+    Returns:
+        [pd.DataFrame]: Returns splited dev and test data
+    """
     X, y = nhanesi()
     df = X.drop([X.columns[0]], axis=1)
     df.loc[:, 'time'] = y
@@ -42,11 +60,16 @@ def load_data(threshold):
 
 
 def prob_drop(age):
+    """
+    Returns specific probability distribution
+    """
     return 1 - (np.exp(0.25 * age - 5) / (1 + np.exp(0.25 * age - 5)))
 
 
 def nhanesi(display=False):
-    """Same as shap, but we use local data."""
+    """
+    Read raw csv data and separate features and target
+    """
     data = pd.read_csv(os.path.join(__location__, './data/NHANES_I_epidemiology.csv'))
     X = data.drop('y', axis=1)
     y = data['y']
@@ -56,6 +79,7 @@ def nhanesi(display=False):
         X_display["Sex"] = ["Male" if v == 1 else "Female" for v in X["Sex"]]
         return X_display, np.array(y)
     return X, np.array(y)
+    
 
 class DataLoader:
     """
