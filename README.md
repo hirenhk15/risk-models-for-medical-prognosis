@@ -100,7 +100,7 @@ The following diagram explains the whole Machine Learning lifecycle of this proj
 </p>
 
 ## Jupyter Notebook
-You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/notebook/risk_models-classification.ipynb) the notebook containing initial efforts to explore data and build models.
+You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/notebook/risk-models-classification.ipynb) the notebook containing initial efforts to explore data and build models.
 
 ## Installation
 Clone this repository:
