@@ -1,6 +1,10 @@
 # Risk Models for Medical Prognosis
 
-## Outline
+<h2>Table of Contents<span class="tocSkip"></span></h2>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Domain" data-toc-modified-id="Domain-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Domain</a></span></li><li><span><a href="#What-is-medical-prognosis?" data-toc-modified-id="What-is-medical-prognosis?-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>What is medical prognosis?</a></span></li><li><span><a href="#Data-Description" data-toc-modified-id="Data-Description-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Data Description</a></span></li><li><span><a href="#Evaluation-metric-for-prognostic-models" data-toc-modified-id="Evaluation-metric-for-prognostic-models-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Evaluation metric for prognostic models</a></span><ul class="toc-item"><li><span><a href="#C-Index:" data-toc-modified-id="C-Index:-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>C-Index:</a></span></li></ul></li><li><span><a href="#Architecture-of-Machine-Learning-System" data-toc-modified-id="Architecture-of-Machine-Learning-System-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Architecture of Machine Learning System</a></span></li><li><span><a href="#EDA-Insights" data-toc-modified-id="EDA-Insights-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>EDA Insights</a></span></li><li><span><a href="#Jupyter-Notebook" data-toc-modified-id="Jupyter-Notebook-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Jupyter Notebook</a></span></li><li><span><a href="#Installation" data-toc-modified-id="Installation-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Installation</a></span></li><li><span><a href="#Deployment" data-toc-modified-id="Deployment-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Deployment</a></span></li><li><span><a href="#Project-Structure" data-toc-modified-id="Project-Structure-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Project Structure</a></span></li><li><span><a href="#Acknowledgement" data-toc-modified-id="Acknowledgement-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Acknowledgement</a></span></li><li><span><a href="#Future-developments:" data-toc-modified-id="Future-developments:-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Future developments:</a></span></li></ul></div>
+
+## Domain
+Healthcare
 
 ## What is medical prognosis?
 Prognosis is a medical term that refers to predicting the risk of a future event. Here, event is a general term that captures a variety of things that can happen to an individual. Events can include outcomes such as death and other adverse events like a heart attack or a stroke, which might be risks for patients who have a specific medical condition or for the general population. 
@@ -13,13 +17,10 @@ Prognosis is also useful for guiding treatment. In clinical practice, the predic
 
 This case study is about building such prognostic models to ***predict the 10-year risk of death of an individuals from the NHANES-I epidemiology dataset*** (for a detailed description of this dataset is given at the [CDC Website](https://wwwn.cdc.gov/nchs/nhanes/nhefs/default.aspx/)).
 
-Typical prognostic modelling look like:
+Typical prognostic modelling look like (***Credit:*** See acknowledgement):
 <p align="center">
   <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/prognostic_model.jpg" />
 </p>
-
-## Domain
-Healthcare
 
 ## Data Description
 Set of features --> patient profile (includes clinical history, physical examinations and labs and imaging)
@@ -77,13 +78,19 @@ The following diagram explains the whole Machine Learning lifecycle of this proj
  - Analyzing missing data for Systolic BP, we see that much more data tends to be missing for patients with the age over 65. The reason could be that blood pressure was measured less frequently for old people to avoid placing additional burden on them. Hence the data is missing at random as there is however no reason to believe that the values of the missing systolic blood pressures are related to the age of the patients.
 <p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/age_missing.png" /></p>
 
- - SHAP values
+ - Here are the insights from below chart:
+    - The red sections on the left are features which push the model towards the final prediction in the positive direction (i.e. a higher Age increases the predicted risk).
+    - The blue sections on the right are features that push the model towards the final prediction in the negative direction (if an increase in a feature leads to a lower risk, it will be shown in blue).
+
 <p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/Shap_values.png" /></p>
 
- - SHAP values
+ - Let's see a summary plot of the SHAP values for each feature on each of the test examples. The colors indicate the value of the feature.
+    - Clearly we see that being a woman (`sex = 2.0`, as opposed to men for which `sex = 1.0`) has a negative SHAP value, meaning that it reduces the risk of dying within 10 years. High age and high systolic blood pressure have positive SHAP values, and are therefore related to increased mortality. 
 <p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap1.png" /></p>
 
- - SHAP values
+ - Features interaction can be seen using dependence plots. These plot the SHAP value for a given feature for each data point, and color the points in using the value for another feature. This lets us begin to explain the variation in SHAP value for a single value of the main feature.
+    - Left plot shows the interaction between Age and Sex. We see that while Age > 50 is generally bad (positive SHAP value), being a woman generally reduces the impact of age. This makes sense since we know that women generally live longer than men.
+    - Right plot shows the interaction between Poverty Index and Age. We see that the impact of poverty index drops off quickly, and for higher income individuals age begins to explain much of variation in the impact of poverty index.
 <p align="center">
   <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap2.png" />
   <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap3.png" />
@@ -105,6 +112,10 @@ Run following command:
 ```python
 python app.py
 ```
+
+## Deployment
+ - This app is deployed in Heroku
+ - CI/CD pipeline is setup (including test cases integration to make sure build will be successful and bug free)
 
 ## Project Structure
 ```bash
@@ -149,7 +160,3 @@ This project is inspired from Coursera: [AI for Medical Prognosis](https://www.c
  - Database integration
  - Batch prediction
  - Auto monitoring of the model
-
-## Steps
-
-1. Use shap to display on UI features contributing in positive prediction (in red) and features contributing in negative prediction (in blue).
