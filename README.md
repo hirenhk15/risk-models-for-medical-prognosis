@@ -66,9 +66,11 @@ The following diagram explains the whole Machine Learning lifecycle of this proj
 
 ## EDA Insights
 
-<img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/correlation_matrix.png" />
+ - Following matrix shows the correlation amongst all the features:
+<p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/correlation_matrix.png" /></p>
 
- - Missing at random or not (e.g. Age variable)
+ - Analyzing missing data for Systolic BP, we see that much more data tends to be missing for patients with the age over 65. The reason could be that blood pressure was measured less frequently for old people to avoid placing additional burden on them. Hence the data is missing at random as there is however no reason to believe that the values of the missing systolic blood pressures are related to the age of the patients.
+<p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/age_missing.png" /></p>
 
 ## Jupyter Notebook
 You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/notebook/risk_models-classification.ipynb) the notebook containing initial efforts to explore data and build models.
