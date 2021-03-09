@@ -52,6 +52,8 @@ The formula for the **c-index** is given below:
   <img src="https://latex.codecogs.com/gif.latex?C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" title="C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}" />
 </p>
 
+\[C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}\]
+
 $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}{\mbox{permissible_pairs}} $$
 
 h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
