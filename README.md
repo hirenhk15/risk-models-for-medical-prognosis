@@ -13,6 +13,9 @@ Prognosis is also useful for guiding treatment. In clinical practice, the predic
 
 This case study is about building such prognostic models to ***predict the 10-year risk of death of an individuals from the NHANES-I epidemiology dataset*** (for a detailed description of this dataset is given at the [CDC Website](https://wwwn.cdc.gov/nchs/nhanes/nhefs/default.aspx/)).
 
+## Domain
+Healthcare
+
 ## Data Description
 Set of features --> patient profile (includes clinical history, physical examinations and labs and imaging)
 Target (Risk score) --> Computed from the features (risk equation = linear combination of natural log of features and its coefficients (coefficients is the factor of contribution of the feature)). Here natural log is taken to make equation linear.
@@ -46,30 +49,25 @@ The **c-index** measures the discriminatory power of a risk score. Intuitively, 
 
 The formula for the **c-index** is given below:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" title="C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}" /></a>
-
 <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" title="C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}" />
 </p>
-
-\[C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}\]
-
-$$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}{\mbox{permissible_pairs}} $$
-
-h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
 
 * A **permissible pair** is a pair of patients who have different outcomes.
 * A **concordant pair** is a permissible pair in which the patient with the higher risk score has the worse outcome.
 * A **risk tie** is a permissible pair where the patients have the same risk score.
 
-## Architecture of ML system
-The following diagram explains the whole ML lifecycle of this project:
+## Architecture of Machine Learning System
+The following diagram explains the whole Machine Learning lifecycle of this project:
 
 <p align="center">
   <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/ML_system.png" />
 </p>
 
 ## EDA Insights
+
+<img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/correlation_matrix.png" />
+
  - Missing at random or not (e.g. Age variable)
 
 ## Jupyter Notebook
@@ -89,9 +87,6 @@ Run following command:
 python app.py
 ```
 
-## Domain
-Healthcare
-
 ## Project Structure
 ```bash
 risk-models-for-medical-prognosis/
@@ -99,33 +94,42 @@ risk-models-for-medical-prognosis/
 ├── risk_models/
 │   ├── data/
 │   │   ├── NHANES_I_epidemiology.csv
-│   │   
 │   ├── model/
 │   │   └── risk_model.pkl
+│   ├── data_transform.py
+│   ├── data_validation.py
+│   ├── logger.py
+│   ├── model_training.py
+│   ├── prediction.py
+│   ├── train_validation.py
+│   ├── util.py
 │   │   
 ├── notebook/
+│   ├── risk-models-classification.ipynb
 ├── images/
 │
 ├── tests/
 │   ├── data/
 │   │   ├── test.json
 │   ├── conftest.py
+│   ├── test_training.py
 │   └── test_predictions.py
 |
 ├── .gitignore
 ├── README.md
+├── app.py
+├── config.py
 ├── requirements.txt
-└── app.py
+└── schema_training.json
 ```
+
+## Acknowledgement
+This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea.
 
 ## Future developments:
  - Database integration
  - Batch prediction
  - Auto monitoring of the model
-
-## Acknowledgement
-This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea.
-
 
 ## Steps
 
