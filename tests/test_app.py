@@ -1,4 +1,4 @@
-# Tests for energy/data endpoint
+# Tests for training and prediction endpoint
 
 import json
 import pytest
