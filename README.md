@@ -55,7 +55,7 @@ $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}
 ## Architecture of ML system
 The following diagram explains the whole ML lifecycle of this project:
 
-![image](\images\ML_system.png)
+![image](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/ML_system.png)
 
 Data Ingestion --> Data validation --> Preprocessing --> Model Building/Evaluating --> Deployment --> Monitor
 
