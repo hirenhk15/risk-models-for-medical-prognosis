@@ -55,9 +55,9 @@ $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}
 ## Architecture of ML system
 The following diagram explains the whole ML lifecycle of this project:
 
-![image](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/ML_system.png)
-
-Data Ingestion --> Data validation --> Preprocessing --> Model Building/Evaluating --> Deployment --> Monitor
+<p align="center">
+  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/ML_system.png" />
+</p>
 
 ## EDA Insights
  - Missing at random or not (e.g. Age variable)
@@ -111,6 +111,7 @@ risk-models-for-medical-prognosis/
 ## Future developments:
  - Database integration
  - Batch prediction
+ - Auto monitoring of the model
 
 ## Acknowledgement
 This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea.
@@ -118,5 +119,4 @@ This project is inspired from Coursera: [AI for Medical Prognosis](https://www.c
 
 ## Steps
 
-1. Setup a pipeline that ingest data, validate data, preprocess and clean and encoding features
-2. Use shap to display on UI features contributing in positive prediction (in red) and features contributing in negative prediction (in blue).
+1. Use shap to display on UI features contributing in positive prediction (in red) and features contributing in negative prediction (in blue).
