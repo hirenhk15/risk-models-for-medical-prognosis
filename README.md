@@ -105,7 +105,7 @@ You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognos
 ## Installation
 Clone this repository:
 ```bash
-git clone <repo url>
+git clone https://github.com/hirenhk15/risk-models-for-medical-prognosis.git
 ```
 Install requirements:
 ```python
