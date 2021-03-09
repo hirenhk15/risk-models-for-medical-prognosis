@@ -55,6 +55,8 @@ $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}
 ## Architecture of ML system
 The following diagram explains the whole ML lifecycle of this project:
 
+![image](\images\ML_system.png)
+
 Data Ingestion --> Data validation --> Preprocessing --> Model Building/Evaluating --> Deployment --> Monitor
 
 ## EDA Insights
