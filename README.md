@@ -145,8 +145,7 @@ risk-models-for-medical-prognosis/
 │   ├── data/
 │   │   ├── test.json
 │   ├── conftest.py
-│   ├── test_training.py
-│   └── test_predictions.py
+│   └── test_app.py
 |
 ├── .gitignore
 ├── README.md
