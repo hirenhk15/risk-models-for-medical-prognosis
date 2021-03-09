@@ -48,6 +48,8 @@ The formula for the **c-index** is given below:
 
 $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}{\mbox{permissible_pairs}} $$
 
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
+
 * A **permissible pair** is a pair of patients who have different outcomes.
 * A **concordant pair** is a permissible pair in which the patient with the higher risk score has the worse outcome.
 * A **risk tie** is a permissible pair where the patients have the same risk score.
