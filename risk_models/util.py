@@ -59,7 +59,7 @@ def load_data(threshold: int):
     return X_dev, X_test, y_dev, y_test
 
 
-def prob_drop(age):
+def prob_drop(age: float):
     """
     Returns specific probability distribution
     """
