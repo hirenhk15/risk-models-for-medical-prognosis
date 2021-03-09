@@ -13,6 +13,11 @@ Prognosis is also useful for guiding treatment. In clinical practice, the predic
 
 This case study is about building such prognostic models to ***predict the 10-year risk of death of an individuals from the NHANES-I epidemiology dataset*** (for a detailed description of this dataset is given at the [CDC Website](https://wwwn.cdc.gov/nchs/nhanes/nhefs/default.aspx/)).
 
+Typical prognostic modelling look like:
+<p align="center">
+  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/prognostic_model.jpg" />
+</p>
+
 ## Domain
 Healthcare
 
@@ -71,6 +76,18 @@ The following diagram explains the whole Machine Learning lifecycle of this proj
 
  - Analyzing missing data for Systolic BP, we see that much more data tends to be missing for patients with the age over 65. The reason could be that blood pressure was measured less frequently for old people to avoid placing additional burden on them. Hence the data is missing at random as there is however no reason to believe that the values of the missing systolic blood pressures are related to the age of the patients.
 <p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/age_missing.png" /></p>
+
+ - SHAP values
+<p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/Shap_values.png" /></p>
+
+ - SHAP values
+<p align="center"><img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap1.png" /></p>
+
+ - SHAP values
+<p align="center">
+  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap2.png" />
+  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/shap3.png" />
+</p>
 
 ## Jupyter Notebook
 You can find [here](https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/notebook/risk_models-classification.ipynb) the notebook containing initial efforts to explore data and build models.
