@@ -48,6 +48,10 @@ The formula for the **c-index** is given below:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" title="C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}" /></a>
 
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?C-index&space;=&space;\frac{{\&hash;}concordant{\&space;}pairs&space;&plus;&space;0.5&space;*&space;risk{\&space;}ties}{{\&hash;permissible{\&space;}pairs}}" title="C-index = \frac{{\#}concordant{\ }pairs + 0.5 * risk{\ }ties}{{\#permissible{\ }pairs}}" />
+</p>
+
 $$ \mbox{c-index} = \frac{\mbox{concordant_pairs} + 0.5 \times \mbox{risk_ties}}{\mbox{permissible_pairs}} $$
 
 h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x
