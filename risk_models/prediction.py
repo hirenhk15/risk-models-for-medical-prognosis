@@ -1,6 +1,7 @@
 # This module is for model inference tasks
 
 import os
+import json
 import config
 import pickle
 import pandas as pd
@@ -20,6 +21,7 @@ class ModelInference:
         Initialize ModelInference arguments
         """
         self.logger = AppLogger()
+        self.schema_path = 'schema_training.json'
         self.file_object = open('./risk_models/logs/model_inference_log.txt', 'a+')
     
     def load_model(self):
@@ -34,7 +36,7 @@ class ModelInference:
                 risk_model = pickle.load(f)
 
             self.logger.log(self.file_object, 'Model Loaded Successfully!')
-            self.file_object.close()
+            #self.file_object.close()
 
             return risk_model
 
@@ -55,16 +57,42 @@ class ModelInference:
             y_pred (str): Yes/No for 10 year risk of death
             score (float): Risk score of patient for death
         """
-        # Return the probability score (i.e. risk score) of positive class
-        score = model.predict_proba(pd.DataFrame([data]))[:, 1][0]
-        
-        # Compare score with threshold for predictions
-        if score > config.RISK_THRESHOLD:
-            y_pred = 'Yes'
-        else:
-            y_pred = 'No'
+        # Validate if data is ready for prediction
+        try:
+            with open(self.schema_path, 'r') as f:
+                _schema = json.load(f)
+            
+            # Extract an information of the data
+            column_length = _schema['NumberofColumns']
 
-        return y_pred, score
+            # Add logs
+            self.logger.log(self.file_object, 'Validating incoming data!')
+
+            if not len(data.keys()) == (column_length-1):
+                message = 'Requested data has missing field!'
+                self.logger.log(self.file_object, message)
+
+                raise ValueError(message)
+            
+            # Return the probability score (i.e. risk score) of positive class
+            score = model.predict_proba(pd.DataFrame([data]))[:, 1][0]
+            
+            # Compare score with threshold for predictions
+            if score > config.RISK_THRESHOLD:
+                y_pred = 'Yes'
+            else:
+                y_pred = 'No'
+
+            self.logger.log(self.file_object, 'Prediction completed!')
+            self.file_object.close()
+
+            return y_pred, score
+        
+        except Exception as e:
+            with self.file_object as f:
+                self.logger.log(f, str(e))
+                
+                raise e
 
     def feature_importance(self):
         """
