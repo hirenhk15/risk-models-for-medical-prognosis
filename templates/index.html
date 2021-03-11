@@ -43,6 +43,13 @@
 		  -webkit-animation: spin 2s linear infinite; /* Safari */
 		  animation: spin 2s linear infinite;
 		}
+		.button {
+		  width: 15%;
+		  margin-left:auto;
+		  margin-right:auto;
+		  display: inline-block;
+		}
+
 
 		/* Safari */
 		@-webkit-keyframes spin {
@@ -64,8 +71,8 @@
 				font-size:3rem;
 			}
 		}
-		.res-container{}
-		.result-box{width:80%;margin-left:auto;margin-right:auto;height: 260px;padding:10px;overflow-y: auto;}
+		.res-container{margin-left:auto;margin-right:auto;}
+		.result-box{width:80%;margin-left:auto;margin-right:auto;height: 160px;padding:10px;overflow-y: auto;}
 		#loading {
 			position: fixed;
 			left: 0px;
@@ -102,7 +109,7 @@
 				transform: rotate(360deg);
 			}
 		}
-		.footer{position:absolute;bottom:0px;width:100%;}
+		.footer{position:relative;bottom:0px;width:100%;}
 		#datafetch_form{padding:0px 40px;}
 		.json-result{}
 		.result-box p{text-align:left;}
@@ -121,32 +128,59 @@
 	<!-- Testimonials -->
 	<section class="testimonials text-center">
 		<div class="container-fluid">
-			<h4 class="my-4 title">Prognostic Model To Predict 10-Year Risk Of Death Of An Individual</h4>
+			<h4 class="my-4 title">Predict 10-Year Risk Of Death Of An Individual</h4>
+			<h6 class="title">Enter the following details: </h6>
 			<div class="row">
 				<div class="col-md-6 col-xs-12">
 					<br/>
 					<form method="post" id="datafetch_form" enctype="multipart/form-data">
 						<div class="form-group files color">
-							<input type="text" name = "Id" id="Id" class="form-control" placeholder="Enter yout ID" required>
-							<input type="text" name = "age" id="age" class="form-control" placeholder="Enter your age" required>
-							<input type="text" name = "csvfile" id="csvfile" class="form-control" placeholder="Enter your sex" required>
-						</div>
-						<div class=""><button class="form-control btn-primary" id="customfile">Predict</button></div>
-						<br/><center><b>Or</b></center><br/>
-						<button class="form-control btn-primary mb-5" id="defaultfile" data-path = "Prediction_Batch_files">
-							Load Random Data
-						</button>
+							<input type="text" name = "name" id="name" class="form-control" placeholder="Full Name" required>
+							<input type="number" name = "Id" id="Id" class="form-control" placeholder="Patient ID" required>
+							<input type="number" name = "age" id="age" class="form-control" placeholder="Age" required>
+							<input type="number" name = "sex" id="sex" class="form-control" placeholder="Sex (1: Male, 2: Female)" required>
+							<input type="number" name = "race" id="race" class="form-control" placeholder="Race" required>
+							<input type="number" name = "dbp" id="dbp" class="form-control" placeholder="Diastolic BP" required>
+							<input type="number" name = "poverty" id="poverty" class="form-control" placeholder="Poverty index" required>
+							<input type="number" name = "rbc" id="rbc" class="form-control" placeholder="Red blood cells" required>
+							<input type="number" name = "sr" id="sr" class="form-control" placeholder="Sedimentation rate" required>
+							<input type="number" name = "sa" id="sa" class="form-control" placeholder="Serum Albumin" required>
+						</div>    
 					</form>
 				</div>
-				<div class="res-container  col-md-6 col-xs-12">
-					<div class="result-box shadow rounded-lg">
-						<h6 class="title">Results</h6>
-						<div class="json-result">
-							
+				<div class="col-md-6 col-xs-12">
+					<br/>
+					<form method="post" id="datafetch_form" enctype="multipart/form-data">
+						<div class="form-group files color">
+							<input type="number" name = "sc" id="sc" class="form-control" placeholder="Serum Cholesterol" required>
+							<input type="number" name = "si" id="si" class="form-control" placeholder="Serum Iron" required>
+							<input type="number" name = "sm" id="sm" class="form-control" placeholder="Serum Magnesium" required>
+							<input type="number" name = "sp" id="sp" class="form-control" placeholder="Serum Protein" required>
+							<input type="number" name = "sbp" id="sbp" class="form-control" placeholder="Systolic BP" required>
+							<input type="number" name = "tibc" id="tibc" class="form-control" placeholder="TIBC" required>
+							<input type="number" name = "ts" id="ts" class="form-control" placeholder="TS" required>
+							<input type="number" name = "wbc" id="wbc" class="form-control" placeholder="White blood cells" required>
+							<input type="number" name = "bmi" id="bmi" class="form-control" placeholder="BMI" required>
+							<input type="number" name = "pp" id="pp" class="form-control" placeholder="Pulse pressure" required>
 						</div>
+					</form>
+				</div>
+			</div>
+			<div class="">
+				<button class="button form-control btn-primary" id="train">Train Model</button>
+				<button class="button form-control btn-primary" id="customdata">Predict</button>
+				<button class="button form-control btn-primary mb-5" id="defaultdata" data-path = "risk_models/data">
+				Load Random Data
+				</button>
+			</div>
+			<div class="res-container  col-md-6 col-xs-12">
+				<div class="result-box shadow rounded-lg">
+					<h6 class="title">Prediction Result</h6>
+					<div class="json-result">
+						
 					</div>
 				</div>
-			</div>						
+			</div>
 		</div>
 	</section>
 
@@ -211,5 +245,4 @@
 		});
 	</script>
 </body>
-
 </html>

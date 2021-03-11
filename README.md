@@ -136,11 +136,13 @@ risk-models-for-medical-prognosis/
 │   ├── prediction.py
 │   ├── train_validation.py
 │   ├── util.py
-│   │   
+│   │
 ├── notebook/
 │   ├── risk-models-classification.ipynb
 ├── images/
 │
+├── templates/
+│   ├── index.html
 ├── tests/
 │   ├── data/
 │   │   ├── test.json
@@ -151,6 +153,7 @@ risk-models-for-medical-prognosis/
 ├── README.md
 ├── app.py
 ├── config.py
+├── Procfile
 ├── requirements.txt
 └── schema_training.json
 ```
