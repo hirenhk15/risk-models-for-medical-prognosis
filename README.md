@@ -136,7 +136,7 @@ risk-models-for-medical-prognosis/
 │   ├── prediction.py
 │   ├── train_validation.py
 │   ├── util.py
-│   │
+│   
 ├── notebook/
 │   ├── risk-models-classification.ipynb
 ├── images/
