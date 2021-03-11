@@ -1,7 +1,8 @@
 import os
 import json
 import config
-from flask import Flask, request
+import pandas as pd
+from flask import Flask, request, jsonify
 from flask import Response, render_template
 from flask_cors import CORS, cross_origin
 from risk_models.model_training import TrainModel
@@ -22,6 +23,29 @@ def home():
     """
     return render_template('index.html')
 
+@app.route('/test/data', methods=['GET'])
+@cross_origin()
+def load_test_Data():
+    """
+    This API handler is used to load test data for prediction
+    """
+    try:
+        # Check if test.csv is present or not! (Model training is required before predictions)
+        test_path = './risk_models/data/test.csv'
+        if not os.path.isfile(test_path):
+            raise FileNotFoundError('Model training is required! Please train model first.')
+        
+        # Read test data
+        test = pd.read_csv(test_path)
+
+        # Select random single record from the test data
+        random_data = test.sample(n=1).rename(columns={'Unnamed: 0': 'Id'}).to_dict(orient='r')
+        
+        return jsonify(random_data[0])
+
+    except Exception as e:
+        return Response('An error occurred! %s' % e)
+
 @app.route('/predict', methods=['POST'])
 @cross_origin()
 def predict_patient_outcome():
@@ -30,8 +54,14 @@ def predict_patient_outcome():
     """
     try:
         # Get the data from request
-        data = request.get_json()
+        #data = request.get_json()
+        data = request.form.to_dict()
+        data.pop('Name')
 
+        # Convert all the values into float
+        for k,v in data.items():
+            data[k] = float(v)
+        
         # Initialize model inference object and load model
         model_obj = ModelInference()
         risk_model = model_obj.load_model()
