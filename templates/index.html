@@ -130,42 +130,44 @@
 		<div class="container-fluid">
 			<h4 class="my-4 title">Predict 10-Year Risk Of Death Of An Individual</h4>
 			<h6 class="title">Enter the following details: </h6>
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-					<br/>
-					<form method="post" id="datafetch_form" enctype="multipart/form-data">
-						<div class="form-group files color">
-							<input type="text" name = "name" id="name" class="form-control" placeholder="Full Name" required>
-							<input type="number" name = "Id" id="Id" class="form-control" placeholder="Patient ID" required>
-							<input type="number" name = "age" id="age" class="form-control" placeholder="Age" required>
-							<input type="number" name = "sex" id="sex" class="form-control" placeholder="Sex (1: Male, 2: Female)" required>
-							<input type="number" name = "race" id="race" class="form-control" placeholder="Race" required>
-							<input type="number" name = "dbp" id="dbp" class="form-control" placeholder="Diastolic BP" required>
-							<input type="number" name = "poverty" id="poverty" class="form-control" placeholder="Poverty index" required>
-							<input type="number" name = "rbc" id="rbc" class="form-control" placeholder="Red blood cells" required>
-							<input type="number" name = "sr" id="sr" class="form-control" placeholder="Sedimentation rate" required>
-							<input type="number" name = "sa" id="sa" class="form-control" placeholder="Serum Albumin" required>
-						</div>    
-					</form>
-				</div>
-				<div class="col-md-6 col-xs-12">
-					<br/>
-					<form method="post" id="datafetch_form" enctype="multipart/form-data">
-						<div class="form-group files color">
-							<input type="number" name = "sc" id="sc" class="form-control" placeholder="Serum Cholesterol" required>
-							<input type="number" name = "si" id="si" class="form-control" placeholder="Serum Iron" required>
-							<input type="number" name = "sm" id="sm" class="form-control" placeholder="Serum Magnesium" required>
-							<input type="number" name = "sp" id="sp" class="form-control" placeholder="Serum Protein" required>
-							<input type="number" name = "sbp" id="sbp" class="form-control" placeholder="Systolic BP" required>
-							<input type="number" name = "tibc" id="tibc" class="form-control" placeholder="TIBC" required>
-							<input type="number" name = "ts" id="ts" class="form-control" placeholder="TS" required>
-							<input type="number" name = "wbc" id="wbc" class="form-control" placeholder="White blood cells" required>
-							<input type="number" name = "bmi" id="bmi" class="form-control" placeholder="BMI" required>
-							<input type="number" name = "pp" id="pp" class="form-control" placeholder="Pulse pressure" required>
-						</div>
-					</form>
-				</div>
-			</div>
+
+            <form method="post" id="datafetch_form" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <br/>
+                        <div class="form-group files color">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
+                            <input type="number" name="Id" id="id" class="form-control" placeholder="Patient ID" required>
+                            <input type="number" name="age" id="age" class="form-control" placeholder="Age" required>
+                            <input type="number" name="sex" id="sex" class="form-control" placeholder="Sex (1: Male, 2: Female)" required>
+                            <input type="number" name="race" id="race" class="form-control" placeholder="Race" required>
+                            <input type="number" name="dbp" id="dbp" class="form-control" placeholder="Diastolic BP" required>
+                            <input type="number" name="poverty" id="poverty" class="form-control" placeholder="Poverty index" required>
+                            <input type="number" name="rbc" id="rbc" class="form-control" placeholder="Red blood cells" required>
+                            <input type="number" name="sr" id="sr" class="form-control" placeholder="Sedimentation rate" required>
+                            <input type="number" name="sa" id="sa" class="form-control" placeholder="Serum Albumin" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <br/>
+                            <div class="form-group files color">
+                                <input type="number" name = "sc" id="sc" class="form-control" placeholder="Serum Cholesterol" required>
+                                <input type="number" name = "si" id="si" class="form-control" placeholder="Serum Iron" required>
+                                <input type="number" name = "sm" id="sm" class="form-control" placeholder="Serum Magnesium" required>
+                                <input type="number" name = "sp" id="sp" class="form-control" placeholder="Serum Protein" required>
+                                <input type="number" name = "sbp" id="sbp" class="form-control" placeholder="Systolic BP" required>
+                                <input type="number" name = "tibc" id="tibc" class="form-control" placeholder="TIBC" required>
+                                <input type="number" name = "ts" id="ts" class="form-control" placeholder="TS" required>
+                                <input type="number" name = "wbc" id="wbc" class="form-control" placeholder="White blood cells" required>
+                                <input type="number" name = "bmi" id="bmi" class="form-control" placeholder="BMI" required>
+                                <input type="number" name = "pp" id="pp" class="form-control" placeholder="Pulse pressure" required>
+                                <input type="submit" style="display: none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
 			<div class="">
 				<button class="button form-control btn-primary" id="train">Train Model</button>
 				<button class="button form-control btn-primary" id="customdata">Predict</button>
@@ -177,7 +179,7 @@
 				<div class="result-box shadow rounded-lg">
 					<h6 class="title">Prediction Result</h6>
 					<div class="json-result">
-						
+
 					</div>
 				</div>
 			</div>
@@ -201,14 +203,16 @@
 			</div>
 		</div>
 	</footer>
-	
-	
+
+
 	<div id="loading"><div class="loader"></div></div>
 	<!-- Bootstrap core JavaScript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script>
+        var randomData;
+
 		$(document).ready(function(){
 			$('#loading').hide();
 			$("#train").click(function(e){
@@ -225,25 +229,43 @@
 				});
 			});
 			$("#customdata").click(function(e){
-				e.preventDefault();
+
+                // Uncomment the following code to prevent user from the cliecking on the predict button without specifying all the form details.
+
+                // var $myForm = $('#datafetch_form');
+                // if(! $myForm[0].checkValidity()) {
+                //     $myForm.find(':submit').click();
+                //     return;
+                // }
+
 				$('#loading').show();
-				$('form').serialize() //this produces: "foo=1&bar=xxx&this=hi"
-				var path = $("#csvfile").val();
-				$.ajax({
-					//change url below
-					url : "/predict",
-					type: "POST",
-					data: {filepath:path},
-					success: function(response){
-						$(".json-result").html(response);
-						$('#loading').hide();
-					}
-				});
+
+                $.post("predict.php", $("#datafetch_form").serialize())
+                .done(function(response) {
+                    console.log(response);
+                    $('#loading').hide();
+                    alert("Done");
+                });
 			});
 			$("#defaultdata").click(function(e){
 				e.preventDefault();
 				$('#loading').show();
-				var path = $(this).attr("data-path");
+
+                $.ajax({
+					url : "/test.json",
+					type: "GET",
+					success: function(response) {
+						randomData = response;
+
+                        $('#id').val(randomData['Id']);
+                        $('#age').val(randomData['Age']);
+                        $('#sex').val(randomData['Sex']);
+                        $('#race').val(randomData['race']);
+                        $('#dbp').val(randomData['Diastolic BP']);
+
+                        $('#loading').hide();
+					}
+				});
 			});
 		});
 	</script>
