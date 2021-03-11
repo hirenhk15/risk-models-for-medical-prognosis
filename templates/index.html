@@ -169,8 +169,8 @@
 			<div class="">
 				<button class="button form-control btn-primary" id="train">Train Model</button>
 				<button class="button form-control btn-primary" id="customdata">Predict</button>
-				<button class="button form-control btn-primary mb-5" id="defaultdata" data-path = "risk_models/data">
-				Load Random Data
+				<button class="button form-control btn-primary mb-5" id="defaultdata" data-path = "risk_models/data/test.csv">
+				Load Test Data
 				</button>
 			</div>
 			<div class="res-container  col-md-6 col-xs-12">
@@ -211,9 +211,23 @@
 	<script>
 		$(document).ready(function(){
 			$('#loading').hide();
-			$("#customfile").click(function(e){
+			$("#train").click(function(e){
 				e.preventDefault();
 				$('#loading').show();
+				$.ajax({
+					//change url below
+					url : "/train",
+					type: "GET",
+					success: function(response){
+						$(".json-result").html(response);
+						$('#loading').hide();
+					}
+				});
+			});
+			$("#customdata").click(function(e){
+				e.preventDefault();
+				$('#loading').show();
+				$('form').serialize() //this produces: "foo=1&bar=xxx&this=hi"
 				var path = $("#csvfile").val();
 				$.ajax({
 					//change url below
@@ -221,26 +235,15 @@
 					type: "POST",
 					data: {filepath:path},
 					success: function(response){
-						$(".json-result").html('<p>"Prediction File created at !!!Prediction_Output_File/Predictions.csvand few of the predictions are"</p><pre>' + response + '</pre>');	
+						$(".json-result").html(response);
 						$('#loading').hide();
 					}
 				});
 			});
-			$("#defaultfile").click(function(e){
+			$("#defaultdata").click(function(e){
 				e.preventDefault();
 				$('#loading').show();
 				var path = $(this).attr("data-path");
-				$.ajax({
-					//change url below
-					url : "/predict",
-					type: "POST",
-					data: {filepath:path},
-					success: function(response){
-						$(".json-result").html('<p>"Prediction File created !!!</p><pre>' + response + '</pre>');
-						$('#loading').hide();
-					}
-				});
-				
 			});
 		});
 	</script>
