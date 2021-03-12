@@ -1,4 +1,4 @@
-pandas==1.2.3
+pandas==1.2.0
 numpy==1.20.1
 lifelines==0.25.9
 flask==1.1.2
