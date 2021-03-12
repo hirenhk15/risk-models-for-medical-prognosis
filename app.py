@@ -31,7 +31,7 @@ def load_test_Data():
     """
     try:
         # Check if test.csv is present or not! (Model training is required before predictions)
-        test_path = './risk_models/data/test.csv'
+        test_path = './risk_models/data/test_samples.csv'
         if not os.path.isfile(test_path):
             raise FileNotFoundError('Model training is required! Please train model first.')
         
