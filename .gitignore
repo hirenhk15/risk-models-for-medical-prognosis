@@ -110,7 +110,7 @@ risk_models/logs
 risk_models/data/train.csv
 risk_models/data/val.csv
 risk_models/data/test.csv
-risk_models/model/risk_model.pkl
+#risk_models/model/risk_model.pkl
 
 # Environments
 #.env

@@ -141,26 +141,26 @@
                             <input type="number" name="Age" id="age" class="form-control" placeholder="Age" required>
                             <input type="number" name="Sex" id="sex" class="form-control" placeholder="Sex (1: Male, 2: Female)" required>
                             <input type="number" name="Race" id="race" class="form-control" placeholder="Race" required>
-                            <input type="number" name="Diastolic BP" id="dbp" class="form-control" placeholder="Diastolic BP" required>
-                            <input type="number" name="Poverty index" id="poverty" class="form-control" placeholder="Poverty index" required>
-                            <input type="number" name="Red blood cells" id="rbc" class="form-control" placeholder="Red blood cells" required>
-                            <input type="number" name="Sedimentation rate" id="sr" class="form-control" placeholder="Sedimentation rate" required>
-                            <input type="number" name="Serum Albumin" id="sa" class="form-control" placeholder="Serum Albumin" required>
+                            <input type="number" name="Diastolic BP" id="dbp" class="form-control" placeholder="Diastolic BP" step="any" required>
+                            <input type="number" name="Poverty index" id="poverty" class="form-control" placeholder="Poverty index" step="any" required>
+                            <input type="number" name="Red blood cells" id="rbc" class="form-control" placeholder="Red blood cells" step="any" required>
+                            <input type="number" name="Sedimentation rate" id="sr" class="form-control" placeholder="Sedimentation rate" step="any" required>
+                            <input type="number" name="Serum Albumin" id="sa" class="form-control" placeholder="Serum Albumin" step="any" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <br/>
                             <div class="form-group files color">
-                                <input type="number" name = "Serum Cholesterol" id="sc" class="form-control" placeholder="Serum Cholesterol" required>
-                                <input type="number" name = "Serum Iron" id="si" class="form-control" placeholder="Serum Iron" required>
-                                <input type="number" name = "Serum Magnesium" id="sm" class="form-control" placeholder="Serum Magnesium" required>
-                                <input type="number" name = "Serum Protein" id="sp" class="form-control" placeholder="Serum Protein" required>
-                                <input type="number" name = "Systolic BP" id="sbp" class="form-control" placeholder="Systolic BP" required>
-                                <input type="number" name = "TIBC" id="tibc" class="form-control" placeholder="TIBC" required>
-                                <input type="number" name = "TS" id="ts" class="form-control" placeholder="TS" required>
-                                <input type="number" name = "White blood cells" id="wbc" class="form-control" placeholder="White blood cells" required>
-                                <input type="number" name = "BMI" id="bmi" class="form-control" placeholder="BMI" required>
-                                <input type="number" name = "Pulse pressure" id="pp" class="form-control" placeholder="Pulse pressure" required>
+                                <input type="number" name = "Serum Cholesterol" id="sc" class="form-control" placeholder="Serum Cholesterol" step="any" required>
+                                <input type="number" name = "Serum Iron" id="si" class="form-control" placeholder="Serum Iron" step="any" required>
+                                <input type="number" name = "Serum Magnesium" id="sm" class="form-control" placeholder="Serum Magnesium" step="any" required>
+                                <input type="number" name = "Serum Protein" id="sp" class="form-control" placeholder="Serum Protein" step="any" required>
+                                <input type="number" name = "Systolic BP" id="sbp" class="form-control" placeholder="Systolic BP" step="any" required>
+                                <input type="number" name = "TIBC" id="tibc" class="form-control" placeholder="TIBC" step="any" required>
+                                <input type="number" name = "TS" id="ts" class="form-control" placeholder="TS" step="any" required>
+                                <input type="number" name = "White blood cells" id="wbc" class="form-control" placeholder="White blood cells" step="any" required>
+                                <input type="number" name = "BMI" id="bmi" class="form-control" placeholder="BMI" step="any" required>
+                                <input type="number" name = "Pulse pressure" id="pp" class="form-control" placeholder="Pulse pressure" step="any" required>
                                 <input type="submit" style="display: none">
                             </div>
                         </div>
@@ -230,11 +230,11 @@
 
                 // Uncomment the following code to prevent user from the cliecking on the predict button without specifying all the form details.
 
-                // var $myForm = $('#datafetch_form');
-                // if(! $myForm[0].checkValidity()) {
-                //     $myForm.find(':submit').click();
-                //     return;
-                // }
+                var $myForm = $('#datafetch_form');
+                if(! $myForm[0].checkValidity()) {
+                    $myForm.find(':submit').click();
+                    return;
+                }
 
 				$('#loading').show();
 				$.ajax({
