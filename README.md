@@ -1,6 +1,6 @@
 # Risk Models for Medical Prognosis
 
-**Please find the user interface for the demo at https://risk-models-app.herokuapp.com/).**
+**Please find the user interface for the demo at https://risk-models-app.herokuapp.com/**
 
 For quick output of the demo:
 <p align="center">
