@@ -159,6 +159,7 @@ risk-models-for-medical-prognosis/
 ├── README.md
 ├── app.py
 ├── config.py
+├── LICENSE
 ├── Procfile
 ├── wsgi.py
 ├── requirements.txt
