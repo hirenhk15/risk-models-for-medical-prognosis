@@ -21,6 +21,7 @@ class ModelInference:
         Initialize ModelInference arguments
         """
         self.logger = AppLogger()
+        self.logger.create_log_dir()
         self.schema_path = 'schema_training.json'
         self.file_object = open('./risk_models/logs/model_inference_log.txt', 'a+')
     
