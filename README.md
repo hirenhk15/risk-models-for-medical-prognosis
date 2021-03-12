@@ -1,10 +1,10 @@
 # Risk Models for Medical Prognosis
 
-Please find the user interface for the [demo](https://risk-models-app.herokuapp.com/).
+**Please find the user interface for the [demo](https://risk-models-app.herokuapp.com/).**
 
 For quick output of the demo:
 <p align="center">
-  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/develop/images/medical_prognosis_model.gif" alt="animated" />
+  <img src="https://github.com/hirenhk15/risk-models-for-medical-prognosis/blob/master/images/medical_prognosis_model.gif" alt="animated" />
 </p>
 
 
@@ -123,8 +123,8 @@ python app.py
 ```
 
 ## Deployment
- - This app is deployed in Heroku
- - CI/CD pipeline is setup (including test cases integration to make sure build will be successful and bug free)
+ - This app is deployed in Heroku.
+ - CI/CD pipeline is setup for continuous integration and continuous delivery when ever code is pushed into master branch.
 
 ## Project Structure
 ```bash
@@ -169,6 +169,7 @@ risk-models-for-medical-prognosis/
 This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea. Also, I would like to thank [Krish Naik](https://www.youtube.com/channel/UCNU_lfiiWBdtULKOw6X0Dig) and [iNeuron](https://ineuron.ai/) team for sharing their knowledge via YouTube videos that helped me to build this project.
 
 ## Future developments
+ - Unit test and system test integration in CI/CD Pipeline.
  - Database integration to store predictions for further analytics.
  - Batch prediction from files of medical records of patients.
  - Auto monitoring of the model performance and retrain if required!
