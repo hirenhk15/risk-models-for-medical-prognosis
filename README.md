@@ -1,6 +1,6 @@
 # Risk Models for Medical Prognosis
 
-Please find the user interface for the [demo]().
+Please find the user interface for the [demo](https://risk-models-app.herokuapp.com/).
 
 <h2>Table of Contents<span class="tocSkip"></span></h2>
 <div class="toc"><ul class="toc-item"><li><span><a href="#Domain" data-toc-modified-id="Domain-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Domain</a></span></li><li><span><a href="#What-is-medical-prognosis?" data-toc-modified-id="What-is-medical-prognosis?-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>What is medical prognosis?</a></span></li><li><span><a href="#Data-Description" data-toc-modified-id="Data-Description-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Data Description</a></span></li><li><span><a href="#Evaluation-metric-for-prognostic-models" data-toc-modified-id="Evaluation-metric-for-prognostic-models-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Evaluation metric for prognostic models</a></span><ul class="toc-item"><li><span><a href="#C-Index" data-toc-modified-id="C-Index-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>C-Index</a></span></li></ul></li><li><span><a href="#Architecture-of-Machine-Learning-System" data-toc-modified-id="Architecture-of-Machine-Learning-System-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Architecture of Machine Learning System</a></span></li><li><span><a href="#EDA-Insights" data-toc-modified-id="EDA-Insights-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>EDA Insights</a></span></li><li><span><a href="#Jupyter-Notebook" data-toc-modified-id="Jupyter-Notebook-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Jupyter Notebook</a></span></li><li><span><a href="#Installation" data-toc-modified-id="Installation-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Installation</a></span></li><li><span><a href="#Deployment" data-toc-modified-id="Deployment-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Deployment</a></span></li><li><span><a href="#Project-Structure" data-toc-modified-id="Project-Structure-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Project Structure</a></span></li><li><span><a href="#Acknowledgement" data-toc-modified-id="Acknowledgement-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Acknowledgement</a></span></li><li><span><a href="#Future-developments" data-toc-modified-id="Future-developments-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Future developments</a></span></li></ul></div>
@@ -154,14 +154,18 @@ risk-models-for-medical-prognosis/
 ├── app.py
 ├── config.py
 ├── Procfile
+├── wsgi.py
 ├── requirements.txt
 └── schema_training.json
 ```
 
 ## Acknowledgement
-This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea.
+This project is inspired from Coursera: [AI for Medical Prognosis](https://www.coursera.org/learn/ai-for-medical-prognosis/home/welcome) course. I have build a real-world implementation of an end-to-end machine learning system upon that idea. Also, I would like to thank [Krish Naik](https://www.youtube.com/channel/UCNU_lfiiWBdtULKOw6X0Dig) and [iNeuron](https://ineuron.ai/) team for sharing their knowledge via YouTube videos that helped me to build this project.
 
 ## Future developments
- - Database integration
- - Batch prediction
- - Auto monitoring of the model
+ - Database integration to store predictions for further analytics.
+ - Batch prediction from files of medical records of patients.
+ - Auto monitoring of the model performance and retrain if required!
+ - SHAP graphs integration to visualize important features contribuiting towards predictions.
+ - Integration of API analytics such as `flask_monitoringdashboard`.
+ - Create CRM module to enable each user to train their own customized risk models using their own data.
