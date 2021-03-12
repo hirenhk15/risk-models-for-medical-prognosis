@@ -1,6 +1,7 @@
-pandas==1.20.1
-numpy==1.2.2
+pandas==1.2.2
+numpy==1.20.1
 lifelines==0.25.9
 flask==1.1.2
 flask-cors==3.0.10
 pytest==6.2.2
+sklearn==0.24.0
