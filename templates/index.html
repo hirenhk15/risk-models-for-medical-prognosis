@@ -43,12 +43,7 @@
 		  -webkit-animation: spin 2s linear infinite; /* Safari */
 		  animation: spin 2s linear infinite;
 		}
-		.button {
-		  width: 15%;
-		  margin-left:auto;
-		  margin-right:auto;
-		  display: inline-block;
-		}
+		
 
 
 		/* Safari */
@@ -110,7 +105,25 @@
 			}
 		}
 		.footer{position:relative;bottom:0px;width:100%;}
-		#datafetch_form{padding:0px 40px;}
+		#datafetch_form{padding:0px 10px;}
+		.editor-label {
+      width: 5%;
+      margin-left: 50px;
+      white-space: nowrap;
+    }
+		.form-control {
+		  width: 50%;
+      margin-left: 125px;
+      margin-right:auto; 
+		  display: inline-block;
+		}
+    
+		.button {
+		  width: 15%;
+		  margin-left:auto;
+		  margin-right:auto;
+		  display: inline-block;
+		}
 		.json-result{}
 		.result-box p{text-align:left;}
 	</style>
@@ -136,30 +149,70 @@
                     <div class="col-md-6 col-xs-12">
                         <br/>
                         <div class="form-group files color">
+
+							<label for="name" class="editor-label">Full Name: </label>
                             <input type="text" name="Name" id="name" class="form-control" placeholder="Full Name" required>
+
+							<label for="name" class="editor-label">Patient ID:</label>
                             <input type="number" name="Id" id="id" class="form-control" placeholder="Patient ID" required>
+
+							<label for="name" class="editor-label">Age:</label>
                             <input type="number" name="Age" id="age" class="form-control" placeholder="Age" required>
+
+							<label for="name" class="editor-label">Sex: </label>
                             <input type="number" name="Sex" id="sex" class="form-control" placeholder="Sex (1: Male, 2: Female)" required>
+
+							<label for="name" class="editor-label">Race: </label>
                             <input type="number" name="Race" id="race" class="form-control" placeholder="Race" required>
+
+							<label for="name" class="editor-label">Diastolic BP: </label>
                             <input type="number" name="Diastolic BP" id="dbp" class="form-control" placeholder="Diastolic BP" step="any" required>
+
+							<label for="name" class="editor-label">Poverty index: </label>
                             <input type="number" name="Poverty index" id="poverty" class="form-control" placeholder="Poverty index" step="any" required>
+
+							<label for="name" class="editor-label">Red blood cells: </label>
                             <input type="number" name="Red blood cells" id="rbc" class="form-control" placeholder="Red blood cells" step="any" required>
+
+							<label for="name" class="editor-label">Sedimentation rate: </label>
                             <input type="number" name="Sedimentation rate" id="sr" class="form-control" placeholder="Sedimentation rate" step="any" required>
+
+							<label for="name" class="editor-label">Serum Albumin: </label>
                             <input type="number" name="Serum Albumin" id="sa" class="form-control" placeholder="Serum Albumin" step="any" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <br/>
                             <div class="form-group files color">
+
+								<label for="name" class="editor-label">Serum Cholesterol: </label>
                                 <input type="number" name = "Serum Cholesterol" id="sc" class="form-control" placeholder="Serum Cholesterol" step="any" required>
+
+								<label for="name" class="editor-label">Serum Iron: </label>
                                 <input type="number" name = "Serum Iron" id="si" class="form-control" placeholder="Serum Iron" step="any" required>
+
+								<label for="name" class="editor-label">Serum Magnesium: </label>
                                 <input type="number" name = "Serum Magnesium" id="sm" class="form-control" placeholder="Serum Magnesium" step="any" required>
+
+								<label for="name" class="editor-label">Serum Protein: </label>
                                 <input type="number" name = "Serum Protein" id="sp" class="form-control" placeholder="Serum Protein" step="any" required>
+
+								<label for="name" class="editor-label">Systolic BP: </label>
                                 <input type="number" name = "Systolic BP" id="sbp" class="form-control" placeholder="Systolic BP" step="any" required>
+
+								<label for="name" class="editor-label">TIBC: </label>
                                 <input type="number" name = "TIBC" id="tibc" class="form-control" placeholder="TIBC" step="any" required>
+
+								<label for="name" class="editor-label">TS: </label>
                                 <input type="number" name = "TS" id="ts" class="form-control" placeholder="TS" step="any" required>
+
+								<label for="name" class="editor-label">White blood cells: </label>
                                 <input type="number" name = "White blood cells" id="wbc" class="form-control" placeholder="White blood cells" step="any" required>
+
+								<label for="name" class="editor-label">BMI: </label>
                                 <input type="number" name = "BMI" id="bmi" class="form-control" placeholder="BMI" step="any" required>
+
+								<label for="name" class="editor-label">Pulse pressure: </label>
                                 <input type="number" name = "Pulse pressure" id="pp" class="form-control" placeholder="Pulse pressure" step="any" required>
                                 <input type="submit" style="display: none">
                             </div>
