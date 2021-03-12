@@ -13,6 +13,7 @@ class TrainValidation:
     def __init__(self, path: str):
         self.path = path
         self.logger = AppLogger()
+        self.logger.create_log_dir()
         self.raw_data = RawDataValidation(self.path)
         self.data_transform = DataTransformation(self.path)
         self.file_object = open('./risk_models/logs/training_main_log.txt', 'a+')

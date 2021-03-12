@@ -7,7 +7,7 @@ class AppLogger:
     def __init__(self):
         pass
 
-    def _create_log_dir(self):
+    def create_log_dir(self):
         """
         Create logs directory if not present
         """
@@ -23,7 +23,7 @@ class AppLogger:
             log_message (str): Log message of the process
         """
         # Create logs dir if not present
-        self._create_log_dir()
+        self.create_log_dir()
 
         self.now = datetime.utcnow()
         self.date = self.now.date()
